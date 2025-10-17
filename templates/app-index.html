@@ -4,22 +4,77 @@
   <meta charset="UTF-8" />
   <title>Rock Paper Scissors</title>
   <style>
-    body { text-align: center; font-family: Arial; margin-top: 50px; }
-    button { margin: 5px; padding: 10px 20px; border-radius: 8px; }
+    /* Basic Reset & Background */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: linear-gradient(135deg, #74ebd5 0%, #9face6 100%);
+      animation: gradientShift 10s ease infinite;
+      color: #fff;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 30px;
+    }
+
+    form {
+      margin: 20px;
+    }
+
+    button {
+      margin: 10px;
+      padding: 20px 40px;
+      font-size: 1.5rem;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: transform 0.2s ease, background-color 0.3s;
+      background-color: #ffffffcc;
+      color: #333;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    button:hover {
+      background-color: #fff;
+      transform: scale(1.05);
+    }
+
+    p, h3 {
+      font-size: 1.5rem;
+      margin-top: 15px;
+    }
+
+    h3 {
+      font-size: 2rem;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
   <h1>🪨 Rock Paper Scissors ✂️</h1>
 
   <form method="POST">
-    <button name="choice" value="rock">Rock</button>
-    <button name="choice" value="paper">Paper</button>
-    <button name="choice" value="scissors">Scissors</button>
+    <button name="choice" value="rock">🪨 Rock</button>
+    <button name="choice" value="paper">📄 Paper</button>
+    <button name="choice" value="scissors">✂️ Scissors</button>
   </form>
 
   {% if result %}
-  <p><strong>You chose:</strong> {{ player }}</p>
-  <p><strong>Computer chose:</strong> {{ computer }}</p>
+  <p><strong>You chose:</strong> {{ player|capitalize }}</p>
+  <p><strong>Computer chose:</strong> {{ computer|capitalize }}</p>
   <h3>{{ result }}</h3>
   {% endif %}
 </body>
